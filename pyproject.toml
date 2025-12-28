@@ -1,0 +1,64 @@
+[project]
+name = "orchestrators-tests"
+version = "0.1.0"
+description = "Benchmark comparison of Apache Airflow, Dagster, and Prefect"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+dependencies = [
+    # Core data processing
+    "pandas",
+    "polars",
+    "pyarrow",
+    
+    # Database
+    "sqlalchemy",
+    "psycopg2-binary",
+    "alembic",
+    
+    # API and networking
+    "requests",
+    "httpx",
+    
+    # Spatial data
+    "geopandas",
+    "shapely",
+    "rasterio",
+    "contextily",
+    
+    # Machine Learning
+    "scikit-learn",
+    "xgboost",
+    "lightgbm",
+    "mlflow",
+    
+    # Orchestrators
+    "apache-airflow[postgres,celery]",
+    "dagster",
+    "dagster-webserver",
+    "dagster-postgres",
+    "prefect",
+    "prefect-sqlalchemy",
+    
+    # Development
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest-asyncio",
+    "pytest-mock",
+    "mypy",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
